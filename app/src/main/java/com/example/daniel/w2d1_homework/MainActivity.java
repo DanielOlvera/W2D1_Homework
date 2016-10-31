@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,17 +17,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivityTAG_";
+    private static final String TAG_FRAG = "TAG_FRAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadPreferences();
+
+        NonUIFragment nonUIFrag = new NonUIFragment();
+        getSupportFragmentManager().beginTransaction().add(nonUIFrag, TAG_FRAG ).commit();
+
     }
 
     @Override
@@ -68,8 +76,32 @@ public class MainActivity extends AppCompatActivity {
         setTitle(logbookTitle);
     }
 
+    public static class NonUIFragment extends Fragment{
+
+        private static final String TAG = "NonUIFragmentTAG_";
+
+
+        public NonUIFragment() {
+        }
+
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            Log.d(TAG, "onCreate: ");
+        }
+    }
+
 }
 
+/*
+Questions:
+    What is the activity backstack?
+    -> The activities are arranged in a stack in order in which each activity is opened.
+
+    What is a service?
+    ->Is a component that runs in the background to perform long-running opersations without needing
+        to interact with the user.
+ */
 
 /*
 References:
@@ -81,5 +113,8 @@ References:
     https://www.youtube.com/watch?v=ezE_SZRStmQ
     https://www.youtube.com/watch?v=f-MaGDBD144
     https://www.youtube.com/watch?v=7Ma0ygAlgWc
-    https://www.youtube.com/watch?v=7Ma0ygAlgWc
+    https://www.youtube.com/watch?v=v-ZWdCA5cdc
+    https://developer.android.com/training/basics/fragments/creating.html
+    https://guides.codepath.com/android/Settings-with-PreferenceFragment
+    https://www.tutorialspoint.com/android/android_shared_preferences.htm
  */
