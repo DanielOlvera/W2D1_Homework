@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Settings">
+        <EditTextPreference android:title="Log Book title"
+            android:summary="The title that will be used in the main action bar."
+            android:key="title"
+            android:defaultValue="Notebook">
+        </EditTextPreference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Color">
+        <CheckBoxPreference android:title="EyeCare Background"
+            android:summary="Will set a darkest color preventing from brighter colors"
+            android:key="eyecare_bkcgrnd"
+            android:defaultValue="false"></CheckBoxPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

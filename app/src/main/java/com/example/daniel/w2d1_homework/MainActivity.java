@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Settings touched!", Toast.LENGTH_SHORT).show();
             case R.id.menu_something:
                 Log.d(TAG, "onOptionsItemSelected: Something");
-                Toast.makeText(this, "Something touched!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something touched!", Toast.LENGTH_SHORT).show();
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -60,4 +60,6 @@ References:
     http://www.cs.dartmouth.edu/~campbell/cs65/lecture12/lecture12.html
     https://www.youtube.com/watch?v=SF3Hh31clqQ
     http://www.techotopia.com/index.php/Creating_and_Managing_Overflow_Menus_on_Android
+    https://developer.android.com/guide/topics/ui/menus.html
+    https://www.youtube.com/watch?v=ezE_SZRStmQ
  */
