@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Settings"
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/ic_settings_white_24dp"
+        app:showAsAction="always"></item>
 
+    <item android:title="Rowing"
+        android:id="@+id/menu_rowing"
+        android:icon="@drawable/ic_rowing_white_24dp"
+        app:showAsAction="never"></item>
+
+    <item android:title="Something"
+        android:id="@+id/menu_something"
+        app:showAsAction="never"></item>
 </menu>
