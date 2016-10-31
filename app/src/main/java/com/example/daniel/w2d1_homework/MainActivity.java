@@ -4,14 +4,18 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivityTAG_";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,26 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.overflow_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_rowing:
+                Log.d(TAG, "onOptionsItemSelected: Rowing");
+                Toast.makeText(getApplicationContext(), "Rowing touched!", Toast.LENGTH_SHORT).show();
+            case R.id.menu_settings:
+                Log.d(TAG, "onOptionsItemSelected: Settings");
+                Toast.makeText(getApplicationContext(), "Settings touched!", Toast.LENGTH_SHORT).show();
+            case R.id.menu_something:
+                Log.d(TAG, "onOptionsItemSelected: Something");
+                Toast.makeText(this, "Something touched!", Toast.LENGTH_SHORT).show();
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+
     }
 }
 
