@@ -1,6 +1,9 @@
 package com.example.daniel.w2d1_homework;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        loadPreferences();
     }
 
     @Override
@@ -37,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_rowing:
                 Log.d(TAG, "onOptionsItemSelected: Rowing");
-                Toast.makeText(getApplicationContext(), "Rowing touched!", Toast.LENGTH_SHORT).show();
             case R.id.menu_settings:
+                Intent intent = new Intent(getApplicationContext(), AppPreferences.class);
+                startActivity(intent);
                 Log.d(TAG, "onOptionsItemSelected: Settings");
-                Toast.makeText(getApplicationContext(), "Settings touched!", Toast.LENGTH_SHORT).show();
             case R.id.menu_something:
                 Log.d(TAG, "onOptionsItemSelected: Something");
-                Toast.makeText(getApplicationContext(), "Something touched!", Toast.LENGTH_SHORT).show();
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -51,6 +54,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    private void loadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        boolean isEyeCarebckgrnd = sharedPreferences.getBoolean("eyecare_bkcgrnd", false);
+        if (isEyeCarebckgrnd){
+            LinearLayout mainLinearLayout = (LinearLayout) findViewById(R.id.m_logfragment);
+            mainLinearLayout.setBackgroundColor(Color.parseColor("#9E9E9E"));
+        }
+
+        String logbookTitle = sharedPreferences.getString("title", "Logbook");
+        setTitle(logbookTitle);
+    }
+
 }
 
 
@@ -63,4 +80,6 @@ References:
     https://developer.android.com/guide/topics/ui/menus.html
     https://www.youtube.com/watch?v=ezE_SZRStmQ
     https://www.youtube.com/watch?v=f-MaGDBD144
+    https://www.youtube.com/watch?v=7Ma0ygAlgWc
+    https://www.youtube.com/watch?v=7Ma0ygAlgWc
  */
